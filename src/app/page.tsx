@@ -1,6 +1,7 @@
 import fetchTodosAction from '@/actions/fetchTodos';
 import TodoList from '@/components/TodoList';
-import FakeTodosProvider from '@/components/TodoFakeStore';
+import FakeTodosProvider from '@/components/TodoFakeProvider';
+import Image from 'next/image';
 
 export default async function Home() {
     const todosData = await fetchTodosAction();
@@ -14,7 +15,23 @@ export default async function Home() {
                 </FakeTodosProvider>
             </main>
             <footer className="flex gap-[24px] flex-wrap items-center justify-center">
-                Hello world footer
+                <Image
+                    src="/logo.png"
+                    alt="It's me"
+                    width={70}
+                    height={70}
+                    className="rounded-full"
+                />
+                <p className="text-lg">
+                    Created for <span className="font-bold">VEEL</span> by{' '}
+                    <a
+                        href="https://t.me/ThalerTimm"
+                        target="_blank"
+                        className="font-bold text-blue-400 text-shadow-blue-200 hover:underline  [text-underline-position:under]"
+                    >
+                        @ThalerTimm
+                    </a>
+                </p>
             </footer>
         </div>
     );

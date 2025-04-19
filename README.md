@@ -1,12 +1,13 @@
 # Todo App with Next.js and JSONPlaceholder API
 
-A simple Todo application built with Next.js, Tailwind CSS, and JSONPlaceholder API. The app allows users to fetch, add, and delete todos.
+A simple Todo application built with Next.js, Tailwind CSS, and JSONPlaceholder API. The app allows users to fetch, add, toggle completion state and delete todos.
 
 ## Features
 
 -   Fetch and display todos from JSONPlaceholder API
 -   Add new todos
 -   Delete existing todos
+-   Toggle completion state
 -   Responsive design with Tailwind CSS
 
 ## Prerequisites
@@ -41,9 +42,10 @@ A simple Todo application built with Next.js, Tailwind CSS, and JSONPlaceholder 
 
 The app uses the following JSONPlaceholder API endpoints:
 
--   GET `/todos?_limit=10` - Fetch todos
--   POST `/todos` - Create a new todo
--   DELETE `/todos/{id}` - Delete a todo
+-   GET `https://jsonplaceholder.typicode.com/todos?_limit=10` - Fetch todos
+-   POST `https://jsonplaceholder.typicode.com/todos` - Create a new todo
+-   PATCH `https://jsonplaceholder.typicode.com/todos/{id}` - Toggle completion state
+-   DELETE `https://jsonplaceholder.typicode.com/todos/{id}` - Delete a todo
 
 ## Technologies Used
 
@@ -56,16 +58,13 @@ The app uses the following JSONPlaceholder API endpoints:
 
 # Notes
 
--   The project uses Next.js 14 with the App Router.
+-   The project uses Next.js 15 with the App Router.
 -   Tailwind CSS is configured for styling.
 -   The Fetch API is used for HTTP requests.
--   The app is client-side rendered with `'use client'` for simplicity.
 -   The README includes instructions to set up and run the project.
--   The JSONPlaceholder API simulates CRUD operations (POST/DELETE requests don't persist).
+-   The JSONPlaceholder API simulates CRUD operations (POST/DELETE/PATCH requests don't persist).
 -   The app is responsive and styled minimally with Tailwind CSS.
 -   TypeScript is assumed for type safety (types included in components).
 
-The app uses 3 case of rendering:
-
--   client-side with `use client` directive for simplicity.
--
+The app uses fake logic for storing added todos (due to the way the placeholder API works). Initial data is retrieved from the server, the following changes are sent to API and stored in local state.
+Added logic for optimistically updating the UI (useOptimistic and useTransition)
